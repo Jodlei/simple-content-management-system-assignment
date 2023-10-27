@@ -6,9 +6,6 @@ import LazyLoadTabContent from "./components/LazyLoadTabContent/LazyLoadTabConte
 
 function App() {
   const [tables, setTables] = useState([]);
-  const [initialTables, setInitialTables] = useState([]);
-
-  const { pathname } = useLocation();
 
   useEffect(() => {
     fetch("/tabs.json")
@@ -34,7 +31,7 @@ function App() {
         <Routes>
           <Route
             path={`/`}
-            element={<Navigate to={tables[0].id} replace={true} />}
+            element={<Navigate to={tables[0]?.id} replace={true} />}
           ></Route>
 
           {tables.map(({ id, path }) => (
